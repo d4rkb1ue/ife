@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<!-- 灰色元素水平垂直居中，有两个四分之一圆位于其左上角和右下角 -->
+<!-- 再灰色高度是根据内容动态变化的时，仍能保持水平垂直居中 -->
+<!-- 动手试一试各种情况的组合，父元素和子元素分别取不同的 position 值。思考 position 属性各种取值的真正含义，尤其是 absolute 究竟是相对谁而言的。 -->
+<head>
+	<meta http-equiv="content-type" content="text/html; chatset=utf-8">
+	<title>Center</title>
+	<style>
+		/* IMPORTANT! BOTH html and body should be set to 100%*/
+		html, body {
+			height: 100%;
+			background-color: #eff;
+			margin: 0;
+		}
+		p {
+			margin: 0;
+		}
+		div#grey {
+			background-color: #ccc;
+			width: 400px;
+			height: 200px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			/* 溢出的圆隐藏 */
+			overflow: hidden;
+		}
+		div.yello {
+			width: 100px;
+			height: 100px;
+			background-color: #fc0;
+			/* 创造一个圆～ */
+			border-radius: 50px;
+		}
+		#left-top {
+			position: absolute;
+			left: -50px;
+			top: -50px;
+		}
+		#right-bottom {
+			position: absolute;
+			bottom: -50px;
+			right: -50px;
+		}
+		.container {
+			/* 绝对定位的参考点是其祖先元素设置了“relative”或者“absolute”值 */
+			position: relative;
+			height: 100%;
+			background-color: #eee;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p>parent</p>
+		<div id="grey">
+			<div id="left-top" class="yello"></div>
+			<div id="right-bottom" class="yello"></div>
+		</div>
+	</div>
+	
+</body>
+</html>
